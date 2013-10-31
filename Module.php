@@ -1,5 +1,5 @@
 <?php
-namespace Htmlgenerator;
+namespace SmartexeHtmlgenerator;
 
 class Module
 {
