@@ -4,7 +4,7 @@ return array(
         //Mail factory
         'factories' => array(
             'MailHtmlGenerator' => function ($sm) {
-                $html = new \Htmlgenerator\Service\MailHtmlGenerator();
+                $html = new \SmartexeHtmlgenerator\Service\MailHtmlGenerator();
                 $html->setViewRenderer($sm->get('ViewRenderer'));
                 
                 return $html;
