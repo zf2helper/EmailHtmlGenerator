@@ -1,5 +1,5 @@
 <?php
-namespace SmartexeHtmlgenerator;
+namespace EmailHtmlGenerator;
 
 class Module
 {
