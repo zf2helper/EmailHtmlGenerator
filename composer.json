@@ -1,5 +1,5 @@
 {
-    "name": "smartexe/emailhtmlgenerator",
+    "name": "zf2helper/emailhtmlgenerator",
     "version": "0.0.1",
     "reference":"master",
     "type": "zf-module",
@@ -9,7 +9,7 @@
     },
     "autoload": {
         "psr-0": {
-            "SmartexeHtmlgenerator": "src/"
+            "zf2helper": "src/"
         },
         "classmap": [
             "./Module.php"
