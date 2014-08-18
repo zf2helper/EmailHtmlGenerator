@@ -1,7 +1,10 @@
 <?php
 namespace EmailHtmlGenerator\Service;
 
-class MailHtmlGenerator
+use \Zend\Mime\Part as MimePart;
+use \Zend\Mime\Message as MimeMessage;
+
+class MailHtmlGenerator extends \Zend\Mail\Message
 {
 
     protected $emailTemplate = null;
