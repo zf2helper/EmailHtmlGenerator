@@ -4,7 +4,7 @@ return array(
         //Mail factory
         'factories' => array(
             'MailHtmlGenerator' => function ($sm) {
-                $mail = new \Core\Service\MailHtmlGenerator();
+                $mail = new \EmailHtmlGenerator\Service\MailHtmlGenerator();
                 $transport = new \Zend\Mail\Transport\Smtp();
                 
                 $mail->setTransport($transport);

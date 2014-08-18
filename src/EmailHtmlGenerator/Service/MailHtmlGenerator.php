@@ -27,7 +27,8 @@ class MailHtmlGenerator
 
         $this->setBody($body);
 
-        $this->getTransport()->send($this);
+        $result = $this->getTransport()->send($this);
+        return $result;
     }
 
     public function setHtmlTemplate($templateName, $params = array())

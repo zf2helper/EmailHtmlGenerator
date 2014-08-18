@@ -4,7 +4,7 @@ return array(
         //Mail factory
         'factories' => array(
             'MailHtmlGenerator' => function ($sm) {
-                $mail = new \Core\Services\Mail();
+                $mail = new \EmailHtmlGenerator\Service\MailHtmlGenerator();
                 //Google email example
                 $options = new \Zend\Mail\Transport\SmtpOptions(array(
                     'name' => 'localhost',
