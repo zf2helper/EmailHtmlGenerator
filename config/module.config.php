@@ -1,14 +1,16 @@
 <?php
 return array(
-    'service_manager' => array(
+   'service_manager' => array(
         //Mail factory
         'factories' => array(
             'MailHtmlGenerator' => function ($sm) {
-                $html = new \SmartexeHtmlgenerator\Service\MailHtmlGenerator();
-                $html->setViewRenderer($sm->get('ViewRenderer'));
+                $mail = new \Core\Service\MailHtmlGenerator();
+                $transport = new \Zend\Mail\Transport\Smtp();
                 
-                return $html;
+                $mail->setTransport($transport);
+                $mail->setViewRenderer($sm->get('ViewRenderer'));
+                return $mail;
             },
         ),
-    ),      
+    ),
 );
