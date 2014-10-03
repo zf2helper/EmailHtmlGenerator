@@ -13,7 +13,7 @@ return array(
                 $resolver = new \Zend\View\Resolver\AggregateResolver();
                 $viewRenderer->setResolver($resolver);
                 $viewsMap = new \Zend\View\Resolver\TemplatePathStack();
-                $viewsMap->addPaths($config['view_manager']['emails_path']);
+                $viewsMap->addPaths($config['view_manager']['template_path_stack']);
                 $resolver->attach($viewsMap);
                 $mail->setViewRenderer($viewRenderer);
                 return $mail;
