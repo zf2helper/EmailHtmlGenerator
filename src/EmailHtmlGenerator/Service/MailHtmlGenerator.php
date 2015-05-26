@@ -12,6 +12,7 @@ class MailHtmlGenerator extends \Zend\Mail\Message
     protected $transport = null;
     protected $htmlType = 'text/html';
     protected $charset = 'utf-8';
+    protected $attachments = array();
 
     public function send()
     {
@@ -22,16 +23,34 @@ class MailHtmlGenerator extends \Zend\Mail\Message
             throw new \Exception("No transport");
         }
 
+        $content  = new MimeMessage();
+        
         $html = new MimePart($this->getHtmlTemplate());
         $html->type = $this->getHtmlType();
         $html->charset = $this->getCharset();
-        $body = new MimeMessage();
-        $body->setParts(array($html));
-
-        $this->setBody($body);
+        
+        $parts = array($html);
+        foreach ($this->attachments as $attachment){
+            $parts[] = $attachment;
+        }
+        
+        $content->setParts($parts);
+        
+        $this->setBody($content);
 
         $result = $this->getTransport()->send($this);
+        
         return $result;
+    }
+    
+    public function addAttachment($file, $name)
+    {
+        $attachment = new MimePart(fopen($file, 'r'));
+        $attachment->type = mime_content_type($file);
+        $attachment->encoding    = \Zend\Mime\Mime::ENCODING_BASE64;
+        $attachment->disposition =  \Zend\Mime\Mime::DISPOSITION_ATTACHMENT;
+        
+        $this->attachments[] = $attachment;
     }
 
     public function setHtmlTemplate($templateName, $params = array())
