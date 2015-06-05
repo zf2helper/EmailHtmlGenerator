@@ -49,6 +49,7 @@ class MailHtmlGenerator extends \Zend\Mail\Message
         $attachment->type = mime_content_type($file);
         $attachment->encoding    = \Zend\Mime\Mime::ENCODING_BASE64;
         $attachment->disposition =  \Zend\Mime\Mime::DISPOSITION_ATTACHMENT;
+        $attachment->filename = $name;
         
         $this->attachments[] = $attachment;
     }
