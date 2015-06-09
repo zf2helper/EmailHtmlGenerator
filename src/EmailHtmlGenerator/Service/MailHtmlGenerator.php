@@ -45,13 +45,15 @@ class MailHtmlGenerator extends \Zend\Mail\Message
     
     public function addAttachment($file, $name)
     {
-        $attachment = new MimePart(fopen($file, 'r'));
-        $attachment->type = mime_content_type($file);
-        $attachment->encoding    = \Zend\Mime\Mime::ENCODING_BASE64;
-        $attachment->disposition =  \Zend\Mime\Mime::DISPOSITION_ATTACHMENT;
-        $attachment->filename = $name;
-        
-        $this->attachments[] = $attachment;
+        if (file_exists($file)){
+            $attachment = new MimePart(fopen($file, 'r'));
+            $attachment->type = mime_content_type($file);
+            $attachment->encoding    = \Zend\Mime\Mime::ENCODING_BASE64;
+            $attachment->disposition =  \Zend\Mime\Mime::DISPOSITION_ATTACHMENT;
+            $attachment->filename = $name;
+
+            $this->attachments[] = $attachment;
+        }
     }
 
     public function setHtmlTemplate($templateName, $params = array())
